@@ -28,7 +28,7 @@ def learning(request):
     question = request.data['messages']
     print(question)
     res = openai.ChatCompletion.create(
-        model = 'gpt-3.5-turbo',
+        model = 'gpt-4',
         temperature = 0.2,
         messages = [
             {"role": "user", "content": request.session.get('prompt')},
