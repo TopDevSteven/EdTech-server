@@ -19,15 +19,16 @@ def gpt_chat_coding(request):
     prompt = """
 Generate the code based on the requirement. Use the following below JSON format.
 ```
-{"language": "", "code": ""}
+{ "language": "", "code": "" }
 
 `language` is the programme language of the requirement, for instance python, cpp, csharp, Java...
 `code` is the generated code based on the requirement.
+The result should be json format so that I can do json.loads(result) successfully
 ```
 """
     res = openai.ChatCompletion.create(
         model = 'gpt-3.5-turbo',
-        temperature = 0.2,
+        temperature = 0.8,
         messages = [
             {"role": "system", "content": prompt},
             {"role": "user", "content": query}
