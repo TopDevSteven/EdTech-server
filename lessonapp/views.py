@@ -17,6 +17,33 @@ learning_style = {
     'reasoning_framework': ''
 }
 
+chat_history = []
+
+api_key = config("OPENAI_API_KEY")
+openai.api_key = api_key
+
+@rest_decorators.api_view(["POST"])
+@rest_decorators.permission_classes([rest_permissions.IsAuthenticated])
+def learning(request):
+    question = request.data['messages']
+    print(question)
+    res = openai.ChatCompletion.create(
+        model = 'gpt-3.5-turbo',
+        temperature = 0.2,
+        messages = [
+            {"role": "user", "content": request.session.get('prompt')},
+            # *chat_history
+            *question
+        ]
+    )
+
+    result = res['choices'][0]['message']['content']
+
+    print(result)
+
+    return response.Response(({'message': result}))
+
+
 # Create your views here.
 @rest_decorators.api_view(["POST"])
 @rest_decorators.permission_classes([rest_permissions.IsAuthenticated])

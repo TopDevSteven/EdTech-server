@@ -13,3 +13,6 @@ pytz==2023.3
 sqlparse==0.4.4
 Pillow==10.0.0
 gunicorn
+pinecone-client==2.2.1
+pypdf2==3.0.1
+python-docx==0.8.11

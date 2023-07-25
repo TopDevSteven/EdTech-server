@@ -19,7 +19,7 @@ def gpt_chat_coding(request):
     prompt = """
 Generate the code based on the requirement. Use the following below JSON format.
 ```
-{language: "", code: ""}
+{"language": "", "code": ""}
 
 `language` is the programme language of the requirement, for instance python, cpp, csharp, Java...
 `code` is the generated code based on the requirement.

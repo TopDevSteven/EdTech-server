@@ -78,6 +78,7 @@ class Document(models.Model):
     document_type = models.CharField(max_length=10, choices=DOCUMENT_TYPE, default=PDF)
     date = models.CharField(max_length=20)
     topic = models.CharField(max_length=100)
+    file = models.CharField(max_length=50)
 
     def __str__(self):
         return self.document_type
